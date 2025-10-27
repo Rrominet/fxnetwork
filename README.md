@@ -1,7 +1,7 @@
 # fxNetwork
 
 A network management GUI application built with C++ and mlgui.2 framework.  
-It's portable and standalone on any distros. Pretty useful if you don't use a *classic* window manger that don't have `poly-bar` or equivalent.
+It's portable and standalone on any distros. Pretty useful if you don't use a *classic* window manager that don't have `poly-bar` or equivalent.
 
 ## What the fuck is this?
 
@@ -40,7 +40,7 @@ sudo ./build-n-install
 
 ## Usage 
 
-Once installed you can launch FxCommander by the command `fxnetwork` (pointing to `/usr/lib/local/fxnetwork` that itself point to `/opt/fxnetwork/fxnetwork`)
+Once installed you can launch FxNetwork by the command `fxnetwork` (pointing to `/usr/lib/local/fxnetwork` that itself point to `/opt/fxnetwork/fxnetwork`)
 
 Just add it to your prefered launcher and you're good to go.
 Why not [fxcommander](https://github.com/Rrominet/fxcommander.git) ? :)
