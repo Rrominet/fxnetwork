@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir /opt/fxnetwork
+cp -v ./fxnetwork /opt/fxnetwork/fxnetwork
+chmod +x /opt/fxnetwork/fxnetwork
+cp -vr ./images /opt/fxnetwork/images
+cp -v ./*.css /opt/fxnetwork
+
+echo "fxnetwork installed."

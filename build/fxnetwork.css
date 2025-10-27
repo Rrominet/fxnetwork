@@ -1,0 +1,123 @@
+.list
+{
+    margin : 0.5em;
+}
+
+.device
+{
+    transition : background-color 0.2s;
+}
+
+.device:hover
+{
+    background-color: var(--hover-background-color);
+}
+
+.device .head
+{
+
+}
+
+.device .foot
+{
+
+}
+
+.device .name
+{
+    font-weight : bold;
+}
+
+.device .type
+{
+    font-style : italic;
+}
+
+.device .state
+{
+    color : grey;
+    font-style : italic;
+}
+
+.device .disconnect
+{
+    box-shadow: none;
+    padding : 3px 12px;
+}
+
+.devices-title
+{font-weight : bold; margin-top : 1em;}
+.label-value-container
+{
+    padding : 0.5em;
+    background-color : var(--list-background-color);
+    border-radius: 5px;
+    margin : 0.5em;
+}
+
+.label-value-container .value
+{
+    font-weight: bold;
+}
+.device-window .network
+{
+    padding : 0.5em;
+}
+.device-window .network *
+{
+    line-height : .5em;
+}
+.network
+{
+    transition: background-color 0.2s;
+}
+
+.network:hover
+{
+    background-color : var(--hover-background-color);
+}
+
+.network .ssid
+{
+    font-weight : bold;
+}
+
+.network .frequency,
+.network .protected
+{
+    color : grey;
+    font-style : italic;
+
+    font-size : 0.85em;
+    line-height : 0.1em;
+}
+.device-window .title
+{
+    font-weight: bold;
+}
+
+.device-window .type
+{
+    color: grey;
+    font-style : italic;
+    margin-right : 0.5em;
+}
+.device-window .strength
+{
+    font-weight : bold;
+}
+
+.device-window .strength.strong
+{
+    color : #22DD77;
+}
+
+.device-window .strength.medium
+{
+    color : #DDDD00;
+}
+
+.device-window .strength.weak
+{
+    color : #DD3300;
+}
