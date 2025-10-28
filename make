@@ -48,18 +48,17 @@ cpp.addToLibs(libs)
 cpp.definitions += defs
 cpp.addInstalledLibrary("gtkmm-4.0")
 
+cpp.addToLibs("stdc++fs")
 if not cpp.release : 
     cpp.addToLibs([
-        "stdc++fs",
-        "../../../frameworks/build/libmlapi.so",
-        "../../mlgui.2/build/libmlgui.so",
+        fm + "/build/libmlapi.so",
+        prjs + "/mlgui.2/build/libmlgui.so",
         ])
 
 elif cpp.release : 
-    cpp.addToLibs([
-        "stdc++fs",
-        "/opt/mlapi/lib/libmlapi.so",
-        "/opt/mlgui/lib/libmlgui.so",
+    cpp.addProject([
+        "/opt/mlapi/lib",
+        "/opt/mlgui/lib",
         ])
 
 if("clean" in sys.argv or "clear" in sys.argv):

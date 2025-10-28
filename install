@@ -1,9 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-mkdir /opt/fxnetwork
+mkdir -pv /opt/fxnetwork
 cp -v ./fxnetwork /opt/fxnetwork/fxnetwork
 chmod +x /opt/fxnetwork/fxnetwork
 cp -vr ./images /opt/fxnetwork/images
 cp -v ./*.css /opt/fxnetwork
+
+cp -v ./version /opt/fxnetwork/version
+cp -v ./dependencies /opt/fxnetwork/dependencies
+
+chmod 777 -R /opt/fxnetwork
+
+rm -fv /usr/local/bin/fxnetwork
+ln -s /opt/fxnetwork/fxnetwork /usr/local/bin/fxnetwork
 
 echo "fxnetwork installed."
