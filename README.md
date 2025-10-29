@@ -3,7 +3,7 @@
 A network management GUI application built with C++ and mlgui.2 framework.  
 It's portable and standalone on any distros. Pretty useful if you don't use a *classic* window manager that don't have `poly-bar` or equivalent.
 
-![Demo](https://motion-live.com/fxos/data/fxcommander-demo.gif)
+![Demo](https://motion-live.com/fxos/data/fxnetwork.gif)
 
 ## What the fuck is this?
 
