@@ -27,9 +27,6 @@ cd ./fxnetwork
 sudo chmod +x ./build-n-install
 sudo ./build-n-install
 ```
-> [!WARNING]
-> For now the `build-n-install` script is bind to debian based distros (it uses `apt`) but I will port it soon on any others.
-> So Stay tuned for that :)
 
 ### Dependencies
 
@@ -120,4 +117,5 @@ The application loads `fxnetwork.css` for styling. Custom CSS classes:
 ## TODO
 
  - [ ] Add the *desktop* file automaticly installed.
+ - [ ] Listen to certain properties changes through D-Bus signal system to have a real-time update in the GUI.
  - [ ] Certainly a lot of bugs to correct lol.
