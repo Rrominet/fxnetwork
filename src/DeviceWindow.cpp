@@ -54,7 +54,8 @@ void DeviceWindow::init()
     _foot->appendCommand(_cmds.command("connect-hidden").get());
     _foot->appendCommand(_cmds.command("scan-networks").get());
 
-    this->hideOnClose(false);
+    //changed and let the polling system sill run without a crash - not really optimized for memory for who cares for a network manager that you will close in minutes.
+    this->hideOnClose(true); 
 }
 
 void DeviceWindow::createCommands()
@@ -105,9 +106,7 @@ void DeviceWindow::scanNetworks()
 
     auto onscanned = [this](dbus::nm::Device, ml::Vec<dbus::nm::WifiNetwork>& networks)
     {
-    lg(networks.size());
         this->drawNetworks(networks);
-
         auto interval = [this]{
             _dev.networks([this](dbus::nm::Device, ml::Vec<dbus::nm::WifiNetwork>& networks){
                 this->drawNetworks(networks);
@@ -262,19 +261,34 @@ void DeviceWindow::connectToNetWork(const dbus::nm::WifiNetwork& network)
                 this->setInfos("Connecting to " + network.ssid() + " ...");
                 auto onconnected = [this, network]
                 {
-                    this->setWorking(false);
-                    this->setInfos("Connected to " + network.ssid());
+                    auto timeout = [this, network]{
+                        this->setWorking(false);
+                        try
+                        {
+                            this->getConnectedToo();
+                            this->setInfos("Connected to " + network.ssid());
+                        }
+                        catch(const std::exception& e)
+                        {
+                            _connectedToo.value->setValue("None");
+                            this->setInfos("Connection failed. Typically due to bad password.");
+                            ml::app()->error("Connection failed. Typically due to bad password.");
+                        }
+                    };
 
-try
-{
-                        this->getConnectedToo();
-}
-catch(const std::exception& e)
-{
-    lg(e.what());
-}
+                    // the connection is typicly pretty long...
+                    // TODO : a better way would be to listen to the signal for the state changes..
+                    ml::app()->setTimeout(timeout, 5000);
                 };
-                _dev.connect(network, _networkConnectionProps->get<ml::StringProperty>("Password")->value(), onconnected);
+
+                auto onerror = [this](const std::string& error)
+                {
+                    this->setWorking(false);
+                    this->setInfos("");
+                    ml::app()->error(error);
+                };
+
+                _dev.connect(network, _networkConnectionProps->get<ml::StringProperty>("Password")->value(), onconnected, onerror);
             });
 }
 
